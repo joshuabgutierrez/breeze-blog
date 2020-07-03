@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from './components/Navbar';
 import Theme from './Theme';
 import { createGlobalStyle } from 'styled-components';
+import Main from './components/Main';
 
 const GlobalStyle = createGlobalStyle`
 	body {
@@ -15,6 +16,7 @@ export default function App() {
 			<React.Fragment>
 				<GlobalStyle />
 				<Navbar />
+				<Main />
 			</React.Fragment>
 		</Theme>
 	);
