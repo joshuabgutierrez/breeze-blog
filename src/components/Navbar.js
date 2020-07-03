@@ -27,6 +27,7 @@ const NavLink = styled.li`
 	color: #333;
 	font-weight: bold;
 	margin: 0 0.5em;
+	cursor: pointer;
 `;
 
 export default function Navbar() {
