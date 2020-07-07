@@ -1,6 +1,6 @@
 import React from 'react';
 import smartphone from '../images/smartphone.jpg';
-import Button from './Button';
+import Button from '../reusable-styled-components/Button';
 import styled from 'styled-components';
 
 const MainPost = styled.div`
@@ -11,6 +11,7 @@ const MainPost = styled.div`
 
 	img {
 		border-radius: 5px;
+		height: 400px;
 	}
 `;
 
@@ -29,7 +30,9 @@ const PostTitle = styled.h3`
 `;
 
 const ButtonPost = styled(Button)`
-	max-width: 100px;
+	max-width: 120px;
+	margin-top: 1.5em;
+	padding: 1em 0;
 `;
 
 export default function FeaturedPost() {
