@@ -4,7 +4,8 @@ import { ThemeProvider } from 'styled-components';
 const theme = {
 	colors: {
 		electricBlue: '#1827ce',
-		wesbos: '#fcc600'
+		wesbos: '#fcc600',
+		report: '#d92027'
 	},
 	fonts: {
 		default: 'sans-serif',
