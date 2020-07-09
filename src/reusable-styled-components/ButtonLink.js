@@ -7,6 +7,10 @@ const ButtonLink = styled.a`
 	font-weight: bold;
 	font-size: 0.9rem;
 
+	& > * {
+		color: inherit;
+	}
+
 	span {
 		border-bottom: 1.5px solid #000;
 	}
