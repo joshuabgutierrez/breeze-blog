@@ -1,7 +1,7 @@
-import React from 'react';
-import { newPosts } from '../posts';
+import React, { useContext } from 'react';
 import NewPost from './NewPost';
 import styled from 'styled-components';
+import { PostsContext } from '../context/postsContext';
 
 const NewPostsSection = styled.section`
 	margin-top: 4em;
@@ -16,6 +16,7 @@ const StyledNewPosts = styled.div`
 `;
 
 export default function NewPosts() {
+	const { newPosts } = useContext(PostsContext);
 	return (
 		<NewPostsSection>
 			<h2>New Blog Posts</h2>

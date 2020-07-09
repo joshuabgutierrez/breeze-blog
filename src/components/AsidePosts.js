@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import SingleAsidePost from './SingleAsidePost';
-import { posts } from '../posts';
+import { PostsContext } from '../context/postsContext';
 
 const AsidePostsColumn = styled.aside`
 	margin: 0 3em;
@@ -10,5 +10,6 @@ const AsidePostsColumn = styled.aside`
 `;
 
 export default function AsidePosts() {
-	return <AsidePostsColumn>{posts.map((post) => <SingleAsidePost key={post.id} {...post} />)}</AsidePostsColumn>;
+	const { mainPosts } = useContext(PostsContext);
+	return <AsidePostsColumn>{mainPosts.map((post) => <SingleAsidePost key={post.id} {...post} />)}</AsidePostsColumn>;
 }

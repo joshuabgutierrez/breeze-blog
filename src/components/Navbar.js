@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from '../reusable-styled-components/Button';
+import { Link } from 'react-router-dom';
 
 const StyledNav = styled.nav`
 	background-color: #fff;
@@ -35,7 +36,9 @@ export default function Navbar() {
 		<StyledNav>
 			<Logo logo>Breeze</Logo>
 			<NavLinks>
-				<NavLink>Articles</NavLink>
+				<Link to="/">
+					<NavLink>Articles</NavLink>
+				</Link>
 				<NavLink>Events</NavLink>
 				<NavLink>Reports</NavLink>
 			</NavLinks>

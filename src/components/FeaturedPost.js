@@ -1,7 +1,8 @@
-import React from 'react';
-import smartphone from '../images/smartphone.jpg';
+import React, { useContext } from 'react';
 import Button from '../reusable-styled-components/Button';
 import styled from 'styled-components';
+import { useHistory } from 'react-router-dom';
+import { PostsContext } from '../context/postsContext';
 
 const MainPost = styled.div`
 	display: flex;
@@ -36,16 +37,18 @@ const ButtonPost = styled(Button)`
 `;
 
 export default function FeaturedPost() {
+	const history = useHistory();
+	const { featuredPosts } = useContext(PostsContext);
+
 	return (
 		<MainPost>
-			<img src={smartphone} alt="Taking pictures with a smartphone" />
+			<img src={featuredPosts.postImg} alt="Taking pictures with a smartphone" />
 			<Tag>Blog Post</Tag>
-			<PostTitle>How to optimize your Facebook & Instagram video ads for success</PostTitle>
-			<p>
-				Instagram and Facebook video ads are extremely popular among marketers these days. Not only are they
-				more engaging and entertaining, they are loved by many ...
-			</p>
-			<ButtonPost>Read Story</ButtonPost>
+			<PostTitle>{featuredPosts.title}</PostTitle>
+			<p>{featuredPosts.excerpt}</p>
+			<ButtonPost onClick={() => history.push({ pathname: '/post', state: { ...featuredPosts } })}>
+				Read Story
+			</ButtonPost>
 		</MainPost>
 	);
 }
