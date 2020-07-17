@@ -38,15 +38,16 @@ const ButtonPost = styled(Button)`
 
 export default function FeaturedPost() {
 	const history = useHistory();
-	const { featuredPosts } = useContext(PostsContext);
+	const { articles } = useContext(PostsContext);
+	const excerpt = articles[0].content.slice(0, 155);
 
 	return (
 		<MainPost>
-			<img src={featuredPosts.postImg} alt="Taking pictures with a smartphone" />
+			<img src={articles[0].postImg} alt="Taking pictures with a smartphone" />
 			<Tag>Blog Post</Tag>
-			<PostTitle>{featuredPosts.title}</PostTitle>
-			<p>{featuredPosts.excerpt}</p>
-			<ButtonPost onClick={() => history.push({ pathname: '/post', state: { ...featuredPosts } })}>
+			<PostTitle>{articles[0].title}</PostTitle>
+			<p>{excerpt} ...</p>
+			<ButtonPost onClick={() => history.push({ pathname: '/post', state: { ...articles[0] } })}>
 				Read Story
 			</ButtonPost>
 		</MainPost>

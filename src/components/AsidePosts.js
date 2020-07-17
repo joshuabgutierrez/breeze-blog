@@ -10,6 +10,9 @@ const AsidePostsColumn = styled.aside`
 `;
 
 export default function AsidePosts() {
-	const { mainPosts } = useContext(PostsContext);
-	return <AsidePostsColumn>{mainPosts.map((post) => <SingleAsidePost key={post.id} {...post} />)}</AsidePostsColumn>;
+	const data = useContext(PostsContext);
+	const { webinars, reports, articles } = data;
+	const asideArticle = articles.filter((article) => article.id === 2);
+	const asidePosts = [ ...asideArticle, ...webinars, ...reports ];
+	return <AsidePostsColumn>{asidePosts.map((post) => <SingleAsidePost key={post.id} {...post} />)}</AsidePostsColumn>;
 }

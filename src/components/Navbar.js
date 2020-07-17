@@ -34,13 +34,13 @@ const NavLink = styled.li`
 export default function Navbar() {
 	return (
 		<StyledNav>
-			<Logo logo>Breeze</Logo>
+			<Link to="/">
+				<Logo logo>Breeze</Logo>
+			</Link>
 			<NavLinks>
-				<Link to="/">
-					<NavLink>Articles</NavLink>
-				</Link>
-				<NavLink>Events</NavLink>
+				<NavLink>Articles</NavLink>
 				<NavLink>Reports</NavLink>
+				<NavLink>Webinars</NavLink>
 			</NavLinks>
 			<Button>Write a post</Button>
 		</StyledNav>

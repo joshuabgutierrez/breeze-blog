@@ -16,11 +16,12 @@ const StyledNewPosts = styled.div`
 `;
 
 export default function NewPosts() {
-	const { newPosts } = useContext(PostsContext);
+	const { articles } = useContext(PostsContext);
+	const newArticles = articles.filter((article) => article.id > 2);
 	return (
 		<NewPostsSection>
 			<h2>New Blog Posts</h2>
-			<StyledNewPosts>{newPosts.map((newPost) => <NewPost key={newPost.id} {...newPost} />)}</StyledNewPosts>
+			<StyledNewPosts>{newArticles.map((article) => <NewPost key={article.id} {...article} />)}</StyledNewPosts>
 		</NewPostsSection>
 	);
 }

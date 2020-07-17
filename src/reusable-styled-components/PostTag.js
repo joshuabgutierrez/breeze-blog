@@ -5,7 +5,7 @@ const PostTag = styled.span`
 	font-weight: bold;
 	color: ${(props) => {
 		switch (props.color) {
-			case 'Story':
+			case 'Blog Post':
 				return props.theme.colors.electricBlue;
 			case 'Report':
 				return props.theme.colors.report;

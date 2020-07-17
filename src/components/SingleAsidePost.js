@@ -25,15 +25,23 @@ const RightContainer = styled.div`
 
 const PostTitle = styled.h3`font-size: 1.25rem;`;
 
-export default function SingleAsidePost({ tag, title, postImg }) {
+export default function SingleAsidePost(post) {
+	const { postImg, tag, title } = post;
 	const history = useHistory();
+
 	return (
 		<SinglePostContainer>
 			<StyledPostImage src={postImg} alt="" />
 			<RightContainer>
 				<PostTag color={tag}>{tag === 'Story' ? 'Blog Post' : tag}</PostTag>
 				<PostTitle>{title}</PostTitle>
-				<ButtonLink onClick={() => history.push('/post')}>
+				<ButtonLink
+					onClick={() =>
+						history.push({
+							pathname: '/post',
+							state: { ...post }
+						})}
+				>
 					<span>Read {tag}</span>
 				</ButtonLink>
 			</RightContainer>
