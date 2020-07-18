@@ -12,7 +12,7 @@ const HomeSection = styled.div`
 export default function Main() {
 	return (
 		<HomeSection>
-			<FeaturedPost />
+			<FeaturedPost isFeatured={true} />
 			<AsidePosts />
 		</HomeSection>
 	);

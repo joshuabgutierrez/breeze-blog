@@ -9,6 +9,7 @@ const MainPost = styled.div`
 	flex-direction: column;
 	width: 100%;
 	max-width: 600px;
+	margin-bottom: 5em;
 
 	img {
 		border-radius: 5px;
@@ -36,20 +37,24 @@ const ButtonPost = styled(Button)`
 	padding: 1em 0;
 `;
 
-export default function FeaturedPost() {
+export default function FeaturedPost({ isFeatured, post }) {
 	const history = useHistory();
 	const { articles } = useContext(PostsContext);
-	const excerpt = articles[0].content.slice(0, 155);
+
+	const renderFeaturedPost = () => {
+		return articles.find((article) => article.isFeatured === true);
+	};
+
+	const posts = isFeatured ? renderFeaturedPost() : post;
+	const excerpt = posts.content.slice(0, 155);
 
 	return (
 		<MainPost>
-			<img src={articles[0].postImg} alt="Taking pictures with a smartphone" />
+			<img src={posts.postImg} alt="Taking pictures with a smartphone" />
 			<Tag>Blog Post</Tag>
-			<PostTitle>{articles[0].title}</PostTitle>
+			<PostTitle>{posts.title}</PostTitle>
 			<p>{excerpt} ...</p>
-			<ButtonPost onClick={() => history.push({ pathname: '/post', state: { ...articles[0] } })}>
-				Read Story
-			</ButtonPost>
+			<ButtonPost onClick={() => history.push({ pathname: '/post', state: { ...posts } })}>Read Story</ButtonPost>
 		</MainPost>
 	);
 }

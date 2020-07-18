@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from '../reusable-styled-components/Button';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { PostsContext } from '../context/postsContext';
 
 const StyledNav = styled.nav`
 	background-color: #fff;
@@ -32,15 +34,22 @@ const NavLink = styled.li`
 `;
 
 export default function Navbar() {
+	const { articles, reports, webinars } = useContext(PostsContext);
 	return (
 		<StyledNav>
 			<Link to="/">
 				<Logo logo>Breeze</Logo>
 			</Link>
 			<NavLinks>
-				<NavLink>Articles</NavLink>
-				<NavLink>Reports</NavLink>
-				<NavLink>Webinars</NavLink>
+				<NavLink>
+					<Link to={{ pathname: '/list', state: articles }}>Articles</Link>
+				</NavLink>
+				<NavLink>
+					<Link to={{ pathname: '/list', state: reports }}>Reports</Link>
+				</NavLink>
+				<NavLink>
+					<Link to={{ pathname: '/list', state: webinars }}>Webinars</Link>
+				</NavLink>
 			</NavLinks>
 			<Button>Write a post</Button>
 		</StyledNav>
