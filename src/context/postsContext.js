@@ -26,7 +26,8 @@ const data = {
 				linkedin: 'https://www.linkedin.com/',
 				twitter: 'https://www.twitter.com/'
 			},
-			postedDate: 'Jul 15, 2020'
+			postedDate: 'Jul 15, 2020',
+			isFeatured: true
 		},
 		{
 			tag: 'Blog Post',
