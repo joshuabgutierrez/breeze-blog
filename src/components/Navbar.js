@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Button from '../reusable-styled-components/Button';
-import { Link } from 'react-router-dom';
+import { Link, withRouter, useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import { PostsContext } from '../context/postsContext';
 
@@ -33,8 +33,22 @@ const NavLink = styled.li`
 	cursor: pointer;
 `;
 
-export default function Navbar() {
+function Navbar() {
 	const { articles, reports, webinars } = useContext(PostsContext);
+	const location = useLocation();
+	const [ isUser, setIsUser ] = useState(false);
+
+	useEffect(
+		() => {
+			if (location.pathname === '/signup' || location.pathname === '/signin') {
+				setIsUser(true);
+			}
+			return () => {
+				setIsUser(false);
+			};
+		},
+		[ location ]
+	);
 
 	return (
 		<StyledNav>
@@ -52,9 +66,14 @@ export default function Navbar() {
 					<Link to={{ pathname: '/list', state: webinars }}>Webinars</Link>
 				</NavLink>
 			</NavLinks>
-			<Link to="/signup">
-				<Button>Write a Post</Button>
-			</Link>
+			{isUser ? (
+				''
+			) : (
+				<Link to="/signup">
+					<Button>Write a Post</Button>
+				</Link>
+			)}
 		</StyledNav>
 	);
 }
+export default withRouter(Navbar);
