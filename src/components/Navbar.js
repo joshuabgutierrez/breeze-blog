@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import Button from '../reusable-styled-components/Button';
 import { Link } from 'react-router-dom';
@@ -35,6 +35,7 @@ const NavLink = styled.li`
 
 export default function Navbar() {
 	const { articles, reports, webinars } = useContext(PostsContext);
+
 	return (
 		<StyledNav>
 			<Link to="/">
@@ -51,7 +52,9 @@ export default function Navbar() {
 					<Link to={{ pathname: '/list', state: webinars }}>Webinars</Link>
 				</NavLink>
 			</NavLinks>
-			<Button>Write a post</Button>
+			<Link to="/signup">
+				<Button>Write a Post</Button>
+			</Link>
 		</StyledNav>
 	);
 }

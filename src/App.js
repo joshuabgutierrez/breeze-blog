@@ -8,6 +8,8 @@ import Post from './components/Post';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { PostsContextProvider } from './context/postsContext';
 import PostsList from './components/PostsList';
+import Signup from './components/Signup';
+import Signin from './components/Signin';
 
 const GlobalStyle = createGlobalStyle`
 	body {
@@ -32,7 +34,9 @@ export default function App() {
 						<Switch>
 							<Route exact path="/" component={Home} />
 							<Route path="/post" component={Post} />
-							<Route path="/list" render={(props) => <PostsList {...props} />} />
+							<Route path="/list" component={PostsList} />
+							<Route path="/signup" component={Signup} />
+							<Route path="/signin" component={Signin} />
 						</Switch>
 						<Footer />
 					</Router>
