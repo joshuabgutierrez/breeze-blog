@@ -1,30 +1,96 @@
 import React from 'react';
+import TextField from '@material-ui/core/TextField';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
 import { Lock } from '@styled-icons/boxicons-solid/Lock';
 import { Link } from 'react-router-dom';
-import { StyledInput, FormContainer, Form, Span } from '../reusable-styled-components/Forms';
 import Button from '../reusable-styled-components/Button';
 
-function Signup() {
+const useStyles = makeStyles((theme) => ({
+	paper: {
+		marginTop: theme.spacing(8),
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center'
+	},
+	form: {
+		width: '100%', // Fix IE 11 issue.
+		marginTop: theme.spacing(3)
+	},
+	submit: {
+		margin: theme.spacing(3, 0, 2)
+	}
+}));
+
+export default function Signup() {
+	const classes = useStyles();
+
 	return (
-		<FormContainer>
-			<header>
-				<Lock size="30" />
-				<h3>Sign Up</h3>
-			</header>
-			<Form>
-				<div>
-					<StyledInput type="text" placeholder="First Name*" />
-					<StyledInput type="text" placeholder="Last Name*" />
-				</div>
-				<StyledInput type="email" placeholder="Email Address*" />
-				<StyledInput type="password" placeholder="Password*" />
-				<Button>Sign Up</Button>
-			</Form>
-			<Link to="/signin">
-				<Span>Already have an account? Sign In</Span>
-			</Link>
-		</FormContainer>
+		<Container component="main" maxWidth="xs">
+			<div className={classes.paper}>
+				<Lock size="35" />
+				<Typography component="h1" variant="h5">
+					Sign up
+				</Typography>
+				<form className={classes.form} noValidate>
+					<Grid container spacing={2}>
+						<Grid item xs={12} sm={6}>
+							<TextField
+								autoComplete="fname"
+								name="firstName"
+								variant="outlined"
+								required
+								fullWidth
+								id="firstName"
+								label="First Name"
+								autoFocus
+							/>
+						</Grid>
+						<Grid item xs={12} sm={6}>
+							<TextField
+								variant="outlined"
+								required
+								fullWidth
+								id="lastName"
+								label="Last Name"
+								name="lastName"
+								autoComplete="lname"
+							/>
+						</Grid>
+						<Grid item xs={12}>
+							<TextField
+								variant="outlined"
+								required
+								fullWidth
+								id="email"
+								label="Email Address"
+								name="email"
+								autoComplete="email"
+							/>
+						</Grid>
+						<Grid item xs={12}>
+							<TextField
+								variant="outlined"
+								required
+								fullWidth
+								name="password"
+								label="Password"
+								type="password"
+								id="password"
+								autoComplete="current-password"
+							/>
+						</Grid>
+					</Grid>
+					<Button margin={1}>Sign Up</Button>
+					<Grid container justify="flex-end">
+						<Grid item>
+							<Link to="/signin">Already have an account? Sign In</Link>
+						</Grid>
+					</Grid>
+				</form>
+			</div>
+		</Container>
 	);
 }
-
-export default Signup;

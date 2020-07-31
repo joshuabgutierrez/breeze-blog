@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const PostTag = styled.span`
+	display: block;
 	font-size: 0.9rem;
 	font-weight: bold;
 	color: ${(props) => {

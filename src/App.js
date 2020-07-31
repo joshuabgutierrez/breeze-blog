@@ -10,11 +10,14 @@ import { PostsContextProvider } from './context/postsContext';
 import PostsList from './components/PostsList';
 import Signup from './components/Signup';
 import Signin from './components/Signin';
+import CreateNewPost from './PrivateComponents/CreateNewPost';
 
 const GlobalStyle = createGlobalStyle`
-	body {
+	html, body {
 		font-family: ${({ theme: { fonts } }) => fonts.mainFont};
 		line-height: 1.3;
+		min-height: 100vh;
+		position: relative;
 	}
 
 	a {
@@ -33,10 +36,11 @@ export default function App() {
 						<Navbar />
 						<Switch>
 							<Route exact path="/" component={Home} />
-							<Route path="/post" component={Post} />
+							<Route exact path="/post" component={Post} />
 							<Route path="/list" component={PostsList} />
 							<Route path="/signup" component={Signup} />
 							<Route path="/signin" component={Signin} />
+							<Route path="/post/new" component={CreateNewPost} />
 						</Switch>
 						<Footer />
 					</Router>

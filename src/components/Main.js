@@ -7,6 +7,10 @@ const HomeSection = styled.div`
 	margin-top: 2em;
 	display: flex;
 	justify-content: center;
+
+	@media (max-width: 1055px) {
+		flex-direction: column;
+	}
 `;
 
 export default function Main() {

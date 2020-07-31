@@ -9,6 +9,8 @@ const Button = styled.button`
 	background-color: ${({ theme: { colors } }) => colors.electricBlue};
 	padding: 0.8em 1.2em;
 	cursor: pointer;
+	width: 100%;
+	margin: ${(props) => props.margin}em 0;
 `;
 
 export default Button;

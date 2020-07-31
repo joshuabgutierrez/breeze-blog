@@ -11,9 +11,14 @@ const MainPost = styled.div`
 	max-width: 600px;
 	margin-bottom: 5em;
 
+	@media (max-width: 1055px) {
+		margin: 0 auto 5em auto;
+	}
+
 	img {
 		border-radius: 5px;
 		height: 400px;
+		max-width: 100%;
 	}
 `;
 

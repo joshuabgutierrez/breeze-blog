@@ -7,6 +7,11 @@ const AsidePostsColumn = styled.aside`
 	margin: 0 3em;
 	width: 100%;
 	max-width: 450px;
+
+	@media (max-width: 1055px) {
+		max-width: 80%;
+		margin: 0 auto;
+	}
 `;
 
 export default function AsidePosts() {

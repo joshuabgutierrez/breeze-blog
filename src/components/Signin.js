@@ -1,26 +1,77 @@
 import React from 'react';
-import { FormContainer, StyledInput, Form, Span } from '../reusable-styled-components/Forms';
+import TextField from '@material-ui/core/TextField';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import { makeStyles } from '@material-ui/core/styles';
+import Container from '@material-ui/core/Container';
 import { Lock } from '@styled-icons/boxicons-solid/Lock';
-import Button from '../reusable-styled-components/Button';
 import { Link } from 'react-router-dom';
+import Button from '../reusable-styled-components/Button';
 
-function Signin() {
+const useStyles = makeStyles((theme) => ({
+	paper: {
+		marginTop: theme.spacing(8),
+		display: 'flex',
+		flexDirection: 'column',
+		alignItems: 'center'
+	},
+	avatar: {
+		margin: theme.spacing(1),
+		backgroundColor: theme.palette.secondary.main
+	},
+	form: {
+		width: '100%', // Fix IE 11 issue.
+		marginTop: theme.spacing(1)
+	},
+	submit: {
+		margin: theme.spacing(3, 0, 2)
+	}
+}));
+
+export default function Signin() {
+	const classes = useStyles();
+
 	return (
-		<FormContainer>
-			<header>
+		<Container component="main" maxWidth="xs">
+			<div className={classes.paper}>
 				<Lock size="30" />
-				<h3>Sign Up</h3>
-			</header>
-			<Form>
-				<StyledInput type="email" placeholder="Email Address*" />
-				<StyledInput type="password" placeholder="Password*" />
-				<Button>Sign In</Button>
-			</Form>
-			<Link to="/signup">
-				<Span>Don't have an account? Sign Up</Span>
-			</Link>
-		</FormContainer>
+				<Typography component="h1" variant="h5">
+					Sign in
+				</Typography>
+				<form className={classes.form} noValidate>
+					<TextField
+						variant="outlined"
+						margin="normal"
+						required
+						fullWidth
+						id="email"
+						label="Email Address"
+						name="email"
+						autoComplete="email"
+						autoFocus
+					/>
+					<TextField
+						variant="outlined"
+						margin="normal"
+						required
+						fullWidth
+						name="password"
+						label="Password"
+						type="password"
+						id="password"
+						autoComplete="current-password"
+					/>
+					<FormControlLabel control={<Checkbox value="remember" color="primary" />} label="Remember me" />
+					<Button margin={1}>Sign In</Button>
+					<Grid container justify="flex-end">
+						<Grid item>
+							<Link to="/signup">Don't have an account? Sign Up</Link>
+						</Grid>
+					</Grid>
+				</form>
+			</div>
+		</Container>
 	);
 }
-
-export default Signin;
