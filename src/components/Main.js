@@ -8,8 +8,12 @@ const HomeSection = styled.div`
 	display: flex;
 	justify-content: center;
 
-	@media (max-width: 1055px) {
+	@media (max-width: 1260px) {
 		flex-direction: column;
+	}
+
+	@media (max-width: 765px) {
+		margin-top: 0;
 	}
 `;
 

@@ -4,12 +4,18 @@ import Button from '../reusable-styled-components/Button';
 import { Link, withRouter, useLocation } from 'react-router-dom';
 import { useContext } from 'react';
 import { PostsContext } from '../context/postsContext';
+import Toggler from './Toggler';
 
 const StyledNav = styled.nav`
 	background-color: #fff;
 	display: flex;
 	justify-content: space-around;
 	align-items: center;
+
+	@media (max-width: 675px) {
+		padding: 0 1em;
+		justify-content: space-between;
+	}
 `;
 
 const Logo = styled.h1`
@@ -23,13 +29,18 @@ const NavLinks = styled.ul`
 	display: flex;
 	margin: 0;
 	padding: 0;
+	align-items: center;
+
+	@media (max-width: 675px) {
+		display: none;
+	}
 `;
 
 const NavLink = styled.li`
 	list-style: none;
 	color: #333;
 	font-weight: bold;
-	margin: 0 0.5em;
+	margin: 0 1.2em;
 	cursor: pointer;
 `;
 
@@ -65,14 +76,15 @@ function Navbar() {
 				<NavLink>
 					<Link to={{ pathname: '/list', state: webinars }}>Webinars</Link>
 				</NavLink>
+				{isUser ? (
+					''
+				) : (
+					<Link to="/signup">
+						<Button>Write a Post</Button>
+					</Link>
+				)}
 			</NavLinks>
-			{isUser ? (
-				''
-			) : (
-				<Link to="/signup">
-					<Button>Write a Post</Button>
-				</Link>
-			)}
+			<Toggler />
 		</StyledNav>
 	);
 }

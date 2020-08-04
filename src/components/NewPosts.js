@@ -8,15 +8,13 @@ const NewPostsSection = styled.section`
 	margin: 4em auto;
 	max-width: 100%;
 	width: 85%;
-	padding: 0 2em;
 
 	& h2 {
-		margin-left: 3em;
+		text-align: center;
 	}
 
 	@media (max-width: 962px) {
 		width: 100%;
-		padding: 0;
 	}
 `;
 
@@ -26,7 +24,9 @@ export default function NewPosts() {
 	return (
 		<NewPostsSection>
 			<h2>New Blog Posts</h2>
-			<Grid container>{newArticles.map((article) => <NewPost key={article.id} {...article} />)}</Grid>
+			<Grid container justify="center">
+				{newArticles.map((article) => <NewPost key={article.id} {...article} />)}
+			</Grid>
 		</NewPostsSection>
 	);
 }

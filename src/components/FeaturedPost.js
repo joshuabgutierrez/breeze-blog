@@ -11,7 +11,8 @@ const MainPost = styled.div`
 	max-width: 600px;
 	margin-bottom: 5em;
 
-	@media (max-width: 1055px) {
+	@media (max-width: 1260px) {
+		max-width: 750px;
 		margin: 0 auto 5em auto;
 	}
 
@@ -19,6 +20,10 @@ const MainPost = styled.div`
 		border-radius: 5px;
 		height: 400px;
 		max-width: 100%;
+
+		@media (max-width: 800px) {
+			height: auto;
+		}
 	}
 `;
 

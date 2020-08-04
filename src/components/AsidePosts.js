@@ -8,9 +8,9 @@ const AsidePostsColumn = styled.aside`
 	width: 100%;
 	max-width: 450px;
 
-	@media (max-width: 1055px) {
-		max-width: 80%;
-		margin: 0 auto;
+	@media (max-width: 1260px) {
+		margin: 3em auto;
+		max-width: 750px;
 	}
 `;
 
